@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://balkangraph.com/js/OrgChart.js"></script>
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      font-family: Helvetica;
+    }
+
+    #tree {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div id="tree" />
+
+  <script>
+    window.onload = function () {
+
+      OrgChart.templates.root = Object.assign({}, OrgChart.templates.ana);
+      OrgChart.templates.root.size = [200, 200];
+      OrgChart.templates.root.node =
+        '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" stroke-width="1" stroke="#aeaeae" rx="15" ry="15"></rect>';
+      OrgChart.templates.root.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="100" y="90" text-anchor="middle">{val}</text>';
+      OrgChart.templates.root.link = '<path stroke-linejoin="round" stroke="#365b6d" stroke-width="2px" fill="none" d="{edge}" />';
+      OrgChart.templates.root.plus = '';
+      OrgChart.templates.root.minus = '';
+
+      OrgChart.templates.hidden = Object.assign({}, OrgChart.templates.root);
+      OrgChart.templates.hidden.size = [0, 0];
+      OrgChart.templates.hidden.link = '';
+
+
+      var chart = new OrgChart(document.getElementById("tree"), {
+        orientation: OrgChart.orientation.left,
+
+        enableDragDrop: true,
+        nodeBinding: {
+          field_0: "text"
+        },
+
+        tags: {
+          root: {
+            template: "root"
+          },
+          hidden: {
+            template: "hidden"
+          }
+        }
+      });
+
+      nodes = [
+        { id: 1, text: "A- Robust Profitable", tags: ["root"] },
+        { id: 2, pid: 1, text: "Turnover", tags: ["root"] },
+        { id: 3, pid: 1, text: "EBIT", tags: ["root"] },
+        { id: 4, pid: 1, tags: ["hidden"] },
+      ];
+      chart.load(nodes);
+    }
+
+  </script>
+</body>
+
+</html>
