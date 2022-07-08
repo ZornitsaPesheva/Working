@@ -51,6 +51,9 @@
       OrgChart.templates.green.size = [150, 60];
       OrgChart.templates.green.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="75" y="30" text-anchor="middle">{val}</text>';
 
+      OrgChart.templates.arrowGreen = Object.assign({}, OrgChart.templates.green);
+
+
       var chart = new OrgChart(document.getElementById("tree"), {
         orientation: OrgChart.orientation.left,
 
