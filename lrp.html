@@ -47,6 +47,9 @@
       OrgChart.templates.hidden.size = [0, 0];
       OrgChart.templates.hidden.link = '';
 
+      OrgChart.templates.green = Object.assign({}, OrgChart.templates.root);
+      OrgChart.templates.green.size = [150, 60];
+      OrgChart.templates.green.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="75" y="30" text-anchor="middle">{val}</text>';
 
       var chart = new OrgChart(document.getElementById("tree"), {
         orientation: OrgChart.orientation.left,
@@ -62,14 +65,17 @@
           },
           hidden: {
             template: "hidden"
+          },
+          green: {
+            template: "green"
           }
         }
       });
 
       nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
-        { id: 2, pid: 1, text: "Turnover", tags: ["root"] },
-        { id: 3, pid: 1, text: "EBIT", tags: ["root"] },
+        { id: 2, pid: 1, text: "Turnover", tags: ["green"] },
+        { id: 3, pid: 1, text: "EBIT", tags: ["green"] },
         { id: 4, pid: 1, tags: ["hidden"] },
       ];
       chart.load(nodes);
