@@ -37,7 +37,7 @@
       OrgChart.templates.root = Object.assign({}, OrgChart.templates.ana);
       OrgChart.templates.root.size = [200, 200];
       OrgChart.templates.root.node =
-        '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" stroke-width="1" stroke="#aeaeae" rx="15" ry="15"></rect>';
+        '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" stroke-width="1" stroke="#aeaeae" rx="12" ry="12"></rect>';
       OrgChart.templates.root.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="100" y="90" text-anchor="middle">{val}</text>';
       OrgChart.templates.root.link = '<path stroke-linejoin="round" stroke="#365b6d" stroke-width="2px" fill="none" d="{edge}" />';
       OrgChart.templates.root.plus = '';
@@ -48,8 +48,8 @@
       OrgChart.templates.hidden.link = '';
 
       OrgChart.templates.green = Object.assign({}, OrgChart.templates.root);
-      OrgChart.templates.green.size = [150, 60];
-      OrgChart.templates.green.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="75" y="30" text-anchor="middle">{val}</text>';
+      OrgChart.templates.green.size = [150, 80];
+      OrgChart.templates.green.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="75" y="50" text-anchor="middle">{val}</text>';
 
       OrgChart.templates.arrowGreen = Object.assign({}, OrgChart.templates.green);
 
