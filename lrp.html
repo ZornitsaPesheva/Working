@@ -33,6 +33,10 @@
         stroke: #cb6ce6;
         fill: #cb6ce6;
     }
+    [data-l-id="[2][7]"] path {
+      stroke-dasharray: 8, 4;
+      stroke-width: 3px;
+    }
 
   </style>
 
@@ -75,6 +79,8 @@
       OrgChart.templates.small = Object.assign({}, OrgChart.templates.main);
       OrgChart.templates.small.size = [120, 60];
       OrgChart.templates.small.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="60" y="40" text-anchor="middle">{val}</text>';
+       OrgChart.templates.small.link = '<path stroke="#365b6d" stroke-width="3px" fill="none" d="M{xa},{ya} {xb},{yb} {xc},{yc} L{xd},{yd}" />';
+
 
       OrgChart.templates.ebit = Object.assign({}, OrgChart.templates.main);
       OrgChart.templates.ebit.size = [170, 80];
@@ -90,7 +96,7 @@
       }
 
       OrgChart.templates.ebitNext = Object.assign({}, OrgChart.templates.ebit);
-      OrgChart.templates.ebitNext.link = '<path stroke-dasharray="8, 4" stroke-linejoin="round" stroke="grey" stroke-width="3px" fill="none" d="M{xa},{ya} {xb},{yb} {xc},{yc} L{xd},{yd}" />';
+      OrgChart.templates.ebitNext.link = '<path stroke-dasharray="8, 4" stroke="#365b6d" stroke-width="3px" fill="none" d="M{xa},{ya} {xb},{yb} {xc},{yc} L{xd},{yd}" />';
       OrgChart.templates.ebitNext.linkAdjuster = {
         fromX: 10,
         fromY: 0,
