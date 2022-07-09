@@ -37,7 +37,7 @@
       OrgChart.templates.root = Object.assign({}, OrgChart.templates.ana);
       OrgChart.templates.root.size = [200, 200];
       OrgChart.templates.root.node =
-        '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" stroke-width="1" stroke="#aeaeae" rx="12" ry="12"></rect>';
+        '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" rx="12" ry="12"></rect>';
       OrgChart.templates.root.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="100" y="90" text-anchor="middle">{val}</text>';
       OrgChart.templates.root.link = '<path stroke-linejoin="round" stroke="#365b6d" stroke-width="2px" fill="none" d="{edge}" />';
       OrgChart.templates.root.plus = '';
@@ -52,6 +52,17 @@
       OrgChart.templates.green.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="75" y="50" text-anchor="middle">{val}</text>';
 
       OrgChart.templates.arrowGreen = Object.assign({}, OrgChart.templates.green);
+      OrgChart.templates.arrowGreen.size = [170, 80];
+      OrgChart.templates.arrowGreen.node =
+        '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" stroke-width="0.5" stroke="#41c1ba"></rect>'
+        +'<path fill="#41c1ba"stroke="#41c1ba" d="M85 120 L0 80 L170 80 Z" />';
+      OrgChart.templates.arrowGreen.link = '';
+      OrgChart.templates.arrowGreen.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="85" y="50" text-anchor="middle">{val}</text>';
+
+
+      OrgChart.templates.smallGreen = Object.assign({}, OrgChart.templates.green);
+      OrgChart.templates.smallGreen.size = [130, 60];
+      OrgChart.templates.smallGreen.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="65" y="40" text-anchor="middle">{val}</text>';
 
 
       var chart = new OrgChart(document.getElementById("tree"), {
@@ -71,6 +82,12 @@
           },
           green: {
             template: "green"
+          },
+          arrowGreen: {
+            template: "arrowGreen"
+          },
+          smallGreen: {
+            template: "smallGreen"
           }
         }
       });
@@ -78,6 +95,8 @@
       nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
         { id: 2, pid: 1, text: "Turnover", tags: ["green"] },
+        { id: 5, pid: 2, text: "100 CR",  tags: ['partner', 'smallGreen'] },
+        { id: 6, pid: 2, text: "Turnover",  tags: ['partner', 'arrowGreen'] },
         { id: 3, pid: 1, text: "EBIT", tags: ["green"] },
         { id: 4, pid: 1, tags: ["hidden"] },
       ];
