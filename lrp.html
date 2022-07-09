@@ -27,7 +27,8 @@
     [data-n-id='8'] rect,
     [data-n-id='9'] rect,
     [data-n-id='9'] path,
-    [data-n-id='10'] rect {
+    [data-n-id='10'] rect,
+    [data-n-id='11'] rect {
         stroke: #cb6ce6;
         fill: #cb6ce6;
     }
@@ -100,7 +101,10 @@
         toX: -10,
         toY: 0
       }
-      OrgChart.templates.ebitNext.field_0 = '<text data-width="150" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="30" text-anchor="middle">{val}</text>';
+
+      OrgChart.templates.ebitNextTO = Object.assign({}, OrgChart.templates.ebitNext);
+
+      OrgChart.templates.ebitNextTO.field_0 = '<text data-width="150" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="30" text-anchor="middle">{val}</text>';
 
       var chart = new OrgChart(document.getElementById("tree"), {
         orientation: OrgChart.orientation.left,
@@ -130,7 +134,10 @@
           },
           ebitNext: {
             template: "ebitNext"
-          }
+          },
+          ebitNextTO: {
+            template: "ebitNextTO"
+          },
         }
       });
 
@@ -149,7 +156,7 @@
         { id: 10, pid: 3, text: "EBIT", tags: ["ebitNext"] },
 
         { id: 4, pid: 1, tags: ["hidden"] },
-        { id: 11, pid: 4, text: "T/O of Export", tags: ["ebitNext"] },
+        { id: 11, pid: 4, text: "T/O of Export", tags: ["ebitNextTO"] },
       ];
       chart.load(nodes);
     }
