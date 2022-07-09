@@ -55,7 +55,7 @@
       OrgChart.templates.arrowGreen.size = [170, 80];
       OrgChart.templates.arrowGreen.node =
         '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" stroke-width="0.5" stroke="#41c1ba"></rect>'
-        +'<path fill="#41c1ba"stroke="#41c1ba" d="M85 120 L0 80 L170 80 Z" />';
+        + '<path fill="#41c1ba"stroke="#41c1ba" d="M85 120 L0 80 L170 80 Z" />';
       OrgChart.templates.arrowGreen.link = '';
       OrgChart.templates.arrowGreen.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="85" y="50" text-anchor="middle">{val}</text>';
 
@@ -64,10 +64,19 @@
       OrgChart.templates.smallGreen.size = [130, 60];
       OrgChart.templates.smallGreen.field_0 = '<text data-width="230" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="65" y="40" text-anchor="middle">{val}</text>';
 
+      OrgChart.templates.ebit = Object.assign({}, OrgChart.templates.green);
+      OrgChart.templates.ebit.size = [170, 80];
+      OrgChart.templates.ebit.node =
+        '<rect x="10" y="0" height="{h}" width="150" fill="#41c1ba" rx="12" ry="12"></rect>';
+      OrgChart.templates.ebit.linkAdjuster = {
+        fromX: 10,
+        fromY: 0,
+        toX: 0,
+        toY: 0
+      }
 
       var chart = new OrgChart(document.getElementById("tree"), {
         orientation: OrgChart.orientation.left,
-
         enableDragDrop: true,
         nodeBinding: {
           field_0: "text"
@@ -88,6 +97,9 @@
           },
           smallGreen: {
             template: "smallGreen"
+          },
+          ebit: {
+            template: "ebit"
           }
         }
       });
@@ -95,9 +107,9 @@
       nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
         { id: 2, pid: 1, text: "Turnover", tags: ["green"] },
-        { id: 5, pid: 2, text: "100 CR",  tags: ['partner', 'smallGreen'] },
-        { id: 6, pid: 2, text: "Turnover",  tags: ['partner', 'arrowGreen'] },
-        { id: 3, pid: 1, text: "EBIT", tags: ["green"] },
+        { id: 5, pid: 2, text: "100 CR", tags: ['partner', 'smallGreen'] },
+        { id: 6, pid: 2, text: "Turnover", tags: ['partner', 'arrowGreen'] },
+        { id: 3, pid: 1, text: "EBIT", tags: ["ebit"] },
         { id: 4, pid: 1, tags: ["hidden"] },
       ];
       chart.load(nodes);
