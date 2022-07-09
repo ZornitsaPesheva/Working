@@ -61,7 +61,6 @@
 
       OrgChart.templates.hidden = Object.assign({}, OrgChart.templates.root);
       OrgChart.templates.hidden.size = [0, 0];
-      OrgChart.templates.hidden.link = '';
 
       OrgChart.templates.main = Object.assign({}, OrgChart.templates.root);
       OrgChart.templates.main.size = [150, 80];
@@ -149,7 +148,9 @@
 
         { id: 3, pid: 1, text: "EBIT", tags: ["ebit"] },
         { id: 10, pid: 3, text: "EBIT", tags: ["ebitNext"] },
+
         { id: 4, pid: 1, tags: ["hidden"] },
+        { id: 11, pid: 4, text: "T/O of Export", tags: ["ebitNext"] },
       ];
       chart.load(nodes);
     }
