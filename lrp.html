@@ -64,9 +64,8 @@
   <div id="tree4"></div>
 
   <script>
-    window.onload = function () {
-
-      OrgChart.templates.root = Object.assign({}, OrgChart.templates.ana);
+   
+   OrgChart.templates.root = Object.assign({}, OrgChart.templates.ana);
       OrgChart.templates.root.size = [200, 200];
       OrgChart.templates.root.node =
         '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" rx="12" ry="12"></rect>';
@@ -82,13 +81,13 @@
       OrgChart.templates.main.size = [150, 80];
       OrgChart.templates.main.field_0 = '<text data-width="150" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="75" y="50" text-anchor="middle">{val}</text>';
 
-      OrgChart.templates.sarrow = Object.assign({}, OrgChart.templates.main);
-      OrgChart.templates.sarrow.size = [170, 80];
-      OrgChart.templates.sarrow.node =
+      OrgChart.templates.arrow = Object.assign({}, OrgChart.templates.main);
+      OrgChart.templates.arrow.size = [170, 80];
+      OrgChart.templates.arrow.node =
         '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" stroke-width="0.5" stroke="#41c1ba"></rect>'
         + '<path fill="#41c1ba"stroke="#41c1ba" d="M85 120 L0 80 L170 80 Z" />';
-      OrgChart.templates.sarrow.link = '';
-      OrgChart.templates.sarrow.field_0 = '<text data-width="170" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="50" text-anchor="middle">{val}</text>';
+      OrgChart.templates.arrow.link = '';
+      OrgChart.templates.arrow.field_0 = '<text data-width="170" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="50" text-anchor="middle">{val}</text>';
 
 
       OrgChart.templates.small = Object.assign({}, OrgChart.templates.main);
@@ -122,16 +121,20 @@
 
       OrgChart.templates.ebitNextTO.field_0 = '<text data-width="150" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="35" text-anchor="middle">{val}</text>';
 
+      OrgChart.templates.numbers = Object.assign({}, OrgChart.templates.main);
+      OrgChart.templates.numbers.node = 
+      '<rect x="0" y="0" height="{h}" width="100" fill="#41c1ba" fill-opacity="0" stroke-width="0", rx="12" ry="12"></rect>';
+
       nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
 
         { id: 2, pid: 1, text: "Turnover", tags: ["main"] },
         { id: 5, pid: 2, text: "100 CR", tags: ['partner', 'small'] },
-        { id: 6, pid: 2, text: "2022-2023", tags: ['partner', 'sarrow'] },
+        { id: 6, pid: 2, text: "2022-2023", tags: ['partner', 'years'] },
 
         { id: 7, pid: 2, text: "Turnover", tags: ["main"] },
         { id: 8, pid: 7, text: "150 CR", tags: ['partner', 'small'] },
-        { id: 9, pid: 7, text: "2023-2024", tags: ['partner', 'sarrow'] },
+        { id: 9, pid: 7, text: "2023-2024", tags: ['partner', 'years'] },
 
         { id: 3, pid: 1, text: "EBIT", tags: ["ebit"] },
         { id: 10, pid: 3, text: "EBIT", tags: ["ebitNext"] },
@@ -139,7 +142,7 @@
 
         { id: 12, pid: 7, text: "Turnover", tags: ["main"] },
         { id: 13, pid: 12, text: "200 CR", tags: ['partner', 'small'] },
-        { id: 14, pid: 12, text: "2024-2025", tags: ['partner', 'sarrow'] },
+        { id: 14, pid: 12, text: "2024-2025", tags: ['partner', 'years'] },
 
         { id: 4, pid: 1, tags: ["hidden"] },
         { id: 11, pid: 4, text: "T/O of Export", tags: ["ebitNextTO"] },
@@ -148,7 +151,8 @@
 
       var chart1 = new OrgChart(document.getElementById("tree1"), {
         orientation: OrgChart.orientation.left,
-        
+        scaleInitial: OrgChart.match.boundary,
+        mouseScrool: OrgChart.action.none,
         enableSearch: false,
         enableDragDrop: true,
         nodeBinding: {
@@ -165,8 +169,8 @@
           main: {
             template: "main"
           },
-          sarrow: {
-            template: "sarrow"
+          years: {
+            template: "arrow"
           },
           small: {
             template: "small"
@@ -188,6 +192,8 @@
 
       var chart2 = new OrgChart(document.getElementById("tree2"), {
         orientation: OrgChart.orientation.left,
+        scaleInitial: OrgChart.match.boundary,
+        mouseScrool: OrgChart.action.none,
         enableDragDrop: true,
         enableSearch: false,
         nodeBinding: {
@@ -204,8 +210,8 @@
           main: {
             template: "main"
           },
-          sarrow: {
-            template: "sarrow"
+          years: {
+            template: "numbers"
           },
           small: {
             template: "small"
@@ -223,8 +229,6 @@
       });
 
       chart2.load(nodes);
-    }
-
   </script>
 </body>
 
