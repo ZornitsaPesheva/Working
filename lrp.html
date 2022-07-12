@@ -19,7 +19,7 @@
     }
 
     #tree1, #tree2, #tree3, #tree4 {
-      width: 49%;
+      width: 45%;
       height: 50%;
       display: inline-block;
     }
@@ -60,6 +60,13 @@
     }
     #tree2 [data-n-id='14'] tspan {
       fill: #ff5757;
+    }
+
+    #tree3 [data-n-id="11"] text:nth-of-type(1) tspan:nth-of-type(1),
+    #tree3 [data-n-id="11"] text:nth-of-type(1) tspan:nth-of-type(2),
+    #tree3 [data-n-id="15"] text:nth-of-type(1) tspan:nth-of-type(1),
+    #tree3 [data-n-id="15"] text:nth-of-type(1) tspan:nth-of-type(2) {
+     baseline-shift: 10px;
     }
 
   </style>
@@ -142,7 +149,7 @@
         '<text data-width="180" data-text-overflow="multiline" style="font-size: 36px;" font-weight="bold" fill="#1d4355" x="75" y="80" text-anchor="middle">{val}</text>';
 
       OrgChart.templates.arrows = Object.assign({}, OrgChart.templates.main);
-      OrgChart.templates.arrows.node = '<path fill="#41c1ba" d="M0 0 L150 0 L190 40 L150 80 L0 80 L 40 40 Z'
+      OrgChart.templates.arrows.node = '<path fill="#41c1ba" d="M-20 0 L130 0 L170 40 L130 80 L-20 80 L20 40 Z" />'
       OrgChart.templates.arrows.link = "";
 
       OrgChart.templates.hiddenPartner = Object.assign({}, OrgChart.templates.hidden);
@@ -175,7 +182,7 @@
 
       var chart1 = new OrgChart(document.getElementById("tree1"), {
         orientation: OrgChart.orientation.left,
-        scaleInitial: OrgChart.match.boundary,
+        scaleInitial: 0.5,
         mouseScrool: OrgChart.action.none,
         enableSearch: false,
         enableDragDrop: true,
@@ -216,7 +223,7 @@
 
       var chart2 = new OrgChart(document.getElementById("tree2"), {
         orientation: OrgChart.orientation.left,
-        scaleInitial: OrgChart.match.boundary,
+        scaleInitial: 0.5,
         mouseScrool: OrgChart.action.none,
         enableDragDrop: true,
         enableSearch: false,
@@ -256,7 +263,7 @@
 
       var chart3 = new OrgChart(document.getElementById("tree3"), {
         orientation: OrgChart.orientation.left,
-        scaleInitial: OrgChart.match.boundary,
+        scaleInitial: 0.5,
         mouseScrool: OrgChart.action.none,
         enableDragDrop: true,
         enableSearch: false,
