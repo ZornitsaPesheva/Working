@@ -19,8 +19,9 @@
     }
 
     #tree1, #tree2, #tree3, #tree4 {
-      width: 50%;
+      width: 49%;
       height: 50%;
+      display: inline-block;
     }
 
     [data-n-id='7'] rect,
@@ -242,6 +243,46 @@
       });
 
       chart2.load(nodes);
+
+      var chart3 = new OrgChart(document.getElementById("tree3"), {
+        orientation: OrgChart.orientation.left,
+        scaleInitial: OrgChart.match.boundary,
+        mouseScrool: OrgChart.action.none,
+        enableDragDrop: true,
+        enableSearch: false,
+        nodeBinding: {
+          field_0: "text"
+        },
+
+        tags: {
+          root: {
+            template: "root"
+          },
+          hidden: {
+            template: "hidden"
+          },
+          main: {
+            template: "main"
+          },
+          years: {
+            template: "numbers"
+          },
+          small: {
+            template: "small"
+          },
+          ebit: {
+            template: "ebit"
+          },
+          ebitNext: {
+            template: "ebitNext"
+          },
+          ebitNextTO: {
+            template: "ebitNextTO"
+          },
+        }
+      });
+
+      chart3.load(nodes);
   </script>
 </body>
 
