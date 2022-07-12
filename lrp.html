@@ -172,7 +172,14 @@
       OrgChart.templates.hiddenPartner = Object.assign({}, OrgChart.templates.hidden);
       OrgChart.templates.hiddenPartner.link = "";
 
-
+      OrgChart.templates.circle = Object.assign({}, OrgChart.templates.ana);
+      OrgChart.templates.circle.node =
+                '<circle cx="120" cy="30" r="65" fill="white" stroke-width="1" stroke="#aeaeae"></circle>';
+      OrgChart.templates.circle.field_0 = "";
+      OrgChart.templates.circle.link = "";
+      OrgChart.templates.circle.plus = "";
+      OrgChart.templates.circle.minus = "";
+      
       let nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
 
@@ -318,6 +325,31 @@
 
       chart3.load(nodes);
 
+      nodes = [
+        { id: 1, text: "A- Robust Profitable", tags: ["root"] },
+
+        { id: 2, pid: 1, text: "Turnover", tags: ["main"] },
+        { id: 5, pid: 2, text: "100 CR", tags: ['partner', 'small'] },
+        { id: 6, pid: 2, text: "2022-2023", tags: ['partner', 'years'] },
+
+        { id: 7, pid: 2, text: "Turnover", tags: ["circle"] },
+        { id: 8, pid: 7, text: "150 CR", tags: ['partner', 'small'] },
+        { id: 9, pid: 7, text: "2023-2024", tags: ['partner', 'years'] },
+
+        { id: 3, pid: 1, text: "EBIT", tags: ["ebit"] },
+        { id: 10, pid: 3, text: "EBIT", tags: ["circle"] },
+        { id: 16, pid: 10, text: "EBIT", tags: ["circle"] },
+
+        { id: 12, pid: 7, text: "Turnover", tags: ["circle"] },
+        { id: 13, pid: 12, text: "200 CR", tags: ['partner', 'small'] },
+        { id: 14, pid: 12, text: "2024-2025", tags: ['partner', 'years'] },
+
+        { id: 4, pid: 1, text: "T/O of Export", tags: ["hidden"] },
+        { id: 11, pid: 4, text: "T/O of Export", tags: ["circle"] },
+        { id: 15, pid: 11, text: "T/O of Export", tags: ["circle"] },
+      ];
+
+
       var chart4 = new OrgChart(document.getElementById("tree4"), {
         orientation: OrgChart.orientation.left,
         scaleInitial: 0.5,
@@ -353,6 +385,9 @@
           ebitNextTO: {
             template: "arrows"
           },
+          circle: {
+            template: "circle"
+          }
         }
       });
 
