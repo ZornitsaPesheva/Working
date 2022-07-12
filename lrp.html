@@ -51,6 +51,10 @@
       fill: #ff5757;
     }
 
+    #tree2 [data-n-id='6'] tspan {
+      fill: #41c1ba;
+    }
+
   </style>
 
 </head>
@@ -125,6 +129,8 @@
       OrgChart.templates.numbers.node = 
       '<rect x="0" y="0" height="{h}" width="100" fill="#41c1ba" fill-opacity="0" stroke-width="0", rx="12" ry="12"></rect>';
       OrgChart.templates.numbers.link = "";
+      OrgChart.templates.numbers.field_0 = 
+        '<text data-width="180" data-text-overflow="multiline" style="font-size: 36px;" font-weight="bold" fill="#1d4355" x="75" y="80" text-anchor="middle">{val}</text>';
 
       nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
