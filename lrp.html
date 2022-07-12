@@ -139,7 +139,11 @@
       OrgChart.templates.numbers.field_0 = 
         '<text data-width="180" data-text-overflow="multiline" style="font-size: 36px;" font-weight="bold" fill="#1d4355" x="75" y="80" text-anchor="middle">{val}</text>';
 
-      nodes = [
+      OrgChart.templates.arrows = Object.assign({}, OrgChart.templates.main);
+      OrgChart.templates.arrows.node = '<path fill="#41c1ba" d="M0 0 L150 0 L190 40 L150 80 L0 80 L 40 40 Z'
+      OrgChart.templates.arrows.links = "";
+
+      let nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
 
         { id: 2, pid: 1, text: "Turnover", tags: ["main"] },
@@ -262,7 +266,7 @@
             template: "hidden"
           },
           main: {
-            template: "main"
+            template: "arrows"
           },
           years: {
             template: "numbers"
