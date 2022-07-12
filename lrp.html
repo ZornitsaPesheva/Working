@@ -18,7 +18,10 @@
       font-family: Helvetica;
     }
 
-    #tree1, #tree2, #tree3, #tree4 {
+    #tree1,
+    #tree2,
+    #tree3,
+    #tree4 {
       width: 45%;
       height: 50%;
       display: inline-block;
@@ -33,9 +36,10 @@
     [data-n-id='7'] path,
     [data-n-id='10'] path,
     [data-n-id='11'] path {
-        stroke: #cb6ce6;
-        fill: #cb6ce6;
+      stroke: #cb6ce6;
+      fill: #cb6ce6;
     }
+
     [data-l-id="[2][7]"] path,
     [data-l-id="[3][10]"] path,
     [data-l-id="[7][12]"] path,
@@ -45,14 +49,14 @@
       stroke-width: 3px;
     }
 
-    [data-n-id='12'] rect, 
-    [data-n-id='13'] rect, 
-    [data-n-id='14'] path, 
+    [data-n-id='12'] rect,
+    [data-n-id='13'] rect,
+    [data-n-id='14'] path,
     [data-n-id='14'] rect,
     [data-n-id='15'] rect,
-    [data-n-id='16'] rect,  
-    [data-n-id='12'] path,  
-    [data-n-id='15'] path,  
+    [data-n-id='16'] rect,
+    [data-n-id='12'] path,
+    [data-n-id='15'] path,
     [data-n-id='16'] path {
       stroke: #ff5757;
       fill: #ff5757;
@@ -62,32 +66,33 @@
     #tree3 [data-n-id='6'] tspan {
       fill: #41c1ba;
     }
+
     #tree2 [data-n-id='9'] tspan,
-    #tree3 [data-n-id='9'] tspan, 
+    #tree3 [data-n-id='9'] tspan,
     #tree4 [data-n-id='9'] tspan {
       fill: #cb6ce6;
     }
-    #tree2 [data-n-id='14'] tspan, 
-    #tree3 [data-n-id='14'] tspan, 
+
+    #tree2 [data-n-id='14'] tspan,
+    #tree3 [data-n-id='14'] tspan,
     #tree4 [data-n-id='14'] tspan {
       fill: #ff5757;
     }
 
-    #tree4 [data-n-id='12'] circle, 
-    #tree4 [data-n-id='15'] circle, 
+    #tree4 [data-n-id='12'] circle,
+    #tree4 [data-n-id='15'] circle,
     #tree4 [data-n-id='16'] circle {
       stroke: #cb6ce6;
     }
-      
+
 
     #tree3 [data-n-id="11"] text:nth-of-type(1) tspan:nth-of-type(1),
     #tree3 [data-n-id="11"] text:nth-of-type(1) tspan:nth-of-type(2),
     #tree3 [data-n-id="15"] text:nth-of-type(1) tspan:nth-of-type(1),
     #tree3 [data-n-id="15"] text:nth-of-type(1) tspan:nth-of-type(2),
     #tree4 [data-n-id="4"] text:nth-of-type(1) tspan:nth-of-type(1),
-    #tree4 [data-n-id="4"] text:nth-of-type(1) tspan:nth-of-type(2)
-    {
-     baseline-shift: 10px;
+    #tree4 [data-n-id="4"] text:nth-of-type(1) tspan:nth-of-type(2) {
+      baseline-shift: 10px;
     }
 
     #tree4 [data-n-id='6'] tspan {
@@ -106,309 +111,318 @@
   <div id="tree4"></div>
 
   <script>
-   
-   OrgChart.templates.root = Object.assign({}, OrgChart.templates.ana);
-      OrgChart.templates.root.size = [200, 200];
-      OrgChart.templates.root.node =
-        '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" rx="12" ry="12"></rect>';
-      OrgChart.templates.root.field_0 = '<text data-width="180" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="100" y="95" text-anchor="middle">{val}</text>';
-      OrgChart.templates.root.link = '<path stroke-linejoin="round" stroke="#365b6d" stroke-width="2px" fill="none" d="{edge}" />';
-      OrgChart.templates.root.plus = '';
-      OrgChart.templates.root.minus = '';
 
-      OrgChart.templates.hidden = Object.assign({}, OrgChart.templates.root);
-      OrgChart.templates.hidden.size = [0, 0];
-      OrgChart.templates.hidden.field_0 = "";
+    OrgChart.templates.root = Object.assign({}, OrgChart.templates.ana);
+    OrgChart.templates.root.size = [200, 200];
+    OrgChart.templates.root.node =
+      '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" rx="12" ry="12"></rect>';
+    OrgChart.templates.root.field_0 = '<text data-width="180" data-text-overflow="multiline" style="font-size: 30px;" font-weight="bold" fill="#1d4355" x="100" y="95" text-anchor="middle">{val}</text>';
+    OrgChart.templates.root.link = '<path stroke-linejoin="round" stroke="#365b6d" stroke-width="2px" fill="none" d="{edge}" />';
+    OrgChart.templates.root.plus = '';
+    OrgChart.templates.root.minus = '';
 
-
-      OrgChart.templates.main = Object.assign({}, OrgChart.templates.root);
-      OrgChart.templates.main.size = [150, 80];
-      OrgChart.templates.main.field_0 = '<text data-width="150" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="75" y="50" text-anchor="middle">{val}</text>';
-
-      OrgChart.templates.arrow = Object.assign({}, OrgChart.templates.main);
-      OrgChart.templates.arrow.size = [170, 80];
-      OrgChart.templates.arrow.node =
-        '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" stroke-width="0.5" stroke="#41c1ba"></rect>'
-        + '<path fill="#41c1ba"stroke="#41c1ba" d="M85 120 L0 80 L170 80 Z" />';
-      OrgChart.templates.arrow.link = '';
-      OrgChart.templates.arrow.field_0 = '<text data-width="170" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="50" text-anchor="middle">{val}</text>';
+    OrgChart.templates.hidden = Object.assign({}, OrgChart.templates.root);
+    OrgChart.templates.hidden.size = [0, 0];
+    OrgChart.templates.hidden.field_0 = "";
 
 
-      OrgChart.templates.small = Object.assign({}, OrgChart.templates.main);
-      OrgChart.templates.small.size = [120, 60];
-      OrgChart.templates.small.field_0 = '<text data-width="120" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="60" y="40" text-anchor="middle">{val}</text>';
-       OrgChart.templates.small.link = '<path stroke="#365b6d" stroke-width="3px" fill="none" d="M{xa},{ya} {xb},{yb} {xc},{yc} L{xd},{yd}" />';
+    OrgChart.templates.main = Object.assign({}, OrgChart.templates.root);
+    OrgChart.templates.main.size = [150, 80];
+    OrgChart.templates.main.field_0 = '<text data-width="150" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="75" y="50" text-anchor="middle">{val}</text>';
+
+    OrgChart.templates.arrow = Object.assign({}, OrgChart.templates.main);
+    OrgChart.templates.arrow.size = [170, 80];
+    OrgChart.templates.arrow.node =
+      '<rect x="0" y="0" height="{h}" width="{w}" fill="#41c1ba" stroke-width="0.5" stroke="#41c1ba"></rect>'
+      + '<path fill="#41c1ba"stroke="#41c1ba" d="M85 120 L0 80 L170 80 Z" />';
+    OrgChart.templates.arrow.link = '';
+    OrgChart.templates.arrow.field_0 = '<text data-width="170" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="50" text-anchor="middle">{val}</text>';
 
 
-      OrgChart.templates.ebit = Object.assign({}, OrgChart.templates.main);
-      OrgChart.templates.ebit.size = [170, 80];
-      OrgChart.templates.ebit.node =
-        '<rect x="10" y="0" height="{h}" width="150" fill="#41c1ba" rx="12" ry="12"></rect>';
-      OrgChart.templates.ebit.field_0 = '<text data-width="160" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="50" text-anchor="middle">{val}</text>';
+    OrgChart.templates.small = Object.assign({}, OrgChart.templates.main);
+    OrgChart.templates.small.size = [120, 60];
+    OrgChart.templates.small.field_0 = '<text data-width="120" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="60" y="40" text-anchor="middle">{val}</text>';
+    OrgChart.templates.small.link = '<path stroke="#365b6d" stroke-width="3px" fill="none" d="M{xa},{ya} {xb},{yb} {xc},{yc} L{xd},{yd}" />';
 
-      OrgChart.templates.ebit.linkAdjuster = {
-        fromX: 10,
-        fromY: 0,
-        toX: 0,
-        toY: 0
-      }
 
-      OrgChart.templates.ebitNext = Object.assign({}, OrgChart.templates.ebit);
-      OrgChart.templates.ebitNext.linkAdjuster = {
-        fromX: 10,
-        fromY: 0,
-        toX: -10,
-        toY: 0
-      }
+    OrgChart.templates.ebit = Object.assign({}, OrgChart.templates.main);
+    OrgChart.templates.ebit.size = [170, 80];
+    OrgChart.templates.ebit.node =
+      '<rect x="10" y="0" height="{h}" width="150" fill="#41c1ba" rx="12" ry="12"></rect>';
+    OrgChart.templates.ebit.field_0 = '<text data-width="160" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="50" text-anchor="middle">{val}</text>';
 
-      OrgChart.templates.ebitNextTO = Object.assign({}, OrgChart.templates.ebitNext);
+    OrgChart.templates.ebit.linkAdjuster = {
+      fromX: 10,
+      fromY: 0,
+      toX: 0,
+      toY: 0
+    }
 
-      OrgChart.templates.ebitNextTO.field_0 = '<text data-width="150" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="35" text-anchor="middle">{val}</text>';
+    OrgChart.templates.ebitNext = Object.assign({}, OrgChart.templates.ebit);
+    OrgChart.templates.ebitNext.linkAdjuster = {
+      fromX: 10,
+      fromY: 0,
+      toX: -10,
+      toY: 0
+    }
 
-      OrgChart.templates.numbers = Object.assign({}, OrgChart.templates.main);
-      OrgChart.templates.numbers.node = 
+    OrgChart.templates.ebitNextTO = Object.assign({}, OrgChart.templates.ebitNext);
+
+    OrgChart.templates.ebitNextTO.field_0 = '<text data-width="150" data-text-overflow="multiline" style="font-size: 24px;" font-weight="bold" fill="#1d4355" x="85" y="35" text-anchor="middle">{val}</text>';
+
+    OrgChart.templates.numbers = Object.assign({}, OrgChart.templates.main);
+    OrgChart.templates.numbers.node =
       '<rect x="0" y="0" height="{h}" width="100" fill="#41c1ba" fill-opacity="0" stroke-width="0", rx="12" ry="12"></rect>';
-      OrgChart.templates.numbers.link = "";
-      OrgChart.templates.numbers.field_0 = 
-        '<text data-width="180" data-text-overflow="multiline" style="font-size: 36px;" font-weight="bold" fill="#1d4355" x="75" y="80" text-anchor="middle">{val}</text>';
+    OrgChart.templates.numbers.link = "";
+    OrgChart.templates.numbers.field_0 =
+      '<text data-width="180" data-text-overflow="multiline" style="font-size: 36px;" font-weight="bold" fill="#1d4355" x="75" y="80" text-anchor="middle">{val}</text>';
 
-      OrgChart.templates.arrows = Object.assign({}, OrgChart.templates.main);
-      OrgChart.templates.arrows.node = '<path fill="#41c1ba" d="M-20 0 L130 0 L170 40 L130 80 L-20 80 L20 40 Z" />'
-      OrgChart.templates.arrows.link = "";
+    OrgChart.templates.arrows = Object.assign({}, OrgChart.templates.main);
+    OrgChart.templates.arrows.node = '<path fill="#41c1ba" d="M-20 0 L130 0 L170 40 L130 80 L-20 80 L20 40 Z" />'
+    OrgChart.templates.arrows.link = "";
 
-      OrgChart.templates.hiddenPartner = Object.assign({}, OrgChart.templates.hidden);
-      OrgChart.templates.hiddenPartner.link = "";
+    OrgChart.templates.hiddenPartner = Object.assign({}, OrgChart.templates.hidden);
+    OrgChart.templates.hiddenPartner.link = "";
+
+    // OrgChart.templates.root.node =
+    //   '<rect x="0" y="50" height="{h}" width="{w}" fill="#41c1ba" rx="12" ry="12"></rect>';
 
 
-      
-      let nodes = [
-        { id: 1, text: "A- Robust Profitable", tags: ["root"] },
+    let nodes = [
+      { id: 1, text: "A- Robust Profitable", tags: ["root"] },
 
-        { id: 2, pid: 1, text: "Turnover", tags: ["main"] },
-        { id: 5, pid: 2, text: "100 CR", tags: ['partner', 'small'] },
-        { id: 6, pid: 2, text: "2022-2023", tags: ['partner', 'years'] },
+      { id: 2, pid: 1, text: "Turnover", tags: ["main"] },
+      { id: 5, pid: 2, text: "100 CR", tags: ['partner', 'small'] },
+      { id: 6, pid: 2, text: "2022-2023", tags: ['partner', 'years'] },
 
-        { id: 7, pid: 2, text: "Turnover", tags: ["main"] },
-        { id: 8, pid: 7, text: "150 CR", tags: ['partner', 'small'] },
-        { id: 9, pid: 7, text: "2023-2024", tags: ['partner', 'years'] },
+      { id: 7, pid: 2, text: "Turnover", tags: ["main"] },
+      { id: 8, pid: 7, text: "150 CR", tags: ['partner', 'small'] },
+      { id: 9, pid: 7, text: "2023-2024", tags: ['partner', 'years'] },
 
-        { id: 3, pid: 1, text: "EBIT", tags: ["ebit"] },
-        { id: 10, pid: 3, text: "EBIT", tags: ["ebitNext"] },
-        { id: 16, pid: 10, text: "EBIT", tags: ["ebitNext"] },
+      { id: 3, pid: 1, text: "EBIT", tags: ["ebit"] },
+      { id: 10, pid: 3, text: "EBIT", tags: ["ebitNext"] },
+      { id: 16, pid: 10, text: "EBIT", tags: ["ebitNext"] },
 
-        { id: 12, pid: 7, text: "Turnover", tags: ["main"] },
-        { id: 13, pid: 12, text: "200 CR", tags: ['partner', 'small'] },
-        { id: 14, pid: 12, text: "2024-2025", tags: ['partner', 'years'] },
+      { id: 12, pid: 7, text: "Turnover", tags: ["main"] },
+      { id: 13, pid: 12, text: "200 CR", tags: ['partner', 'small'] },
+      { id: 14, pid: 12, text: "2024-2025", tags: ['partner', 'years'] },
 
-        { id: 4, pid: 1, text: "T/O of Export", tags: ["hidden"] },
-        { id: 11, pid: 4, text: "T/O of Export", tags: ["ebitNextTO"] },
-        { id: 15, pid: 11, text: "T/O of Export", tags: ["ebitNextTO"] },
-      ];
+      { id: 4, pid: 1, text: "T/O of Export", tags: ["hidden"] },
+      { id: 11, pid: 4, text: "T/O of Export", tags: ["ebitNextTO"] },
+      { id: 15, pid: 11, text: "T/O of Export", tags: ["ebitNextTO"] },
+    ];
 
-      var chart1 = new OrgChart(document.getElementById("tree1"), {
-        orientation: OrgChart.orientation.left,
-        scaleInitial: 0.5,
-        mouseScrool: OrgChart.action.none,
-        enableSearch: false,
-        enableDragDrop: true,
-        nodeBinding: {
-          field_0: "text"
+    var chart1 = new OrgChart(document.getElementById("tree1"), {
+      orientation: OrgChart.orientation.left,
+      nodeMouseClick: OrgChart.action.none,
+      scaleInitial: 0.5,
+      mouseScrool: OrgChart.action.none,
+      enableSearch: false,
+      enableDragDrop: true,
+      nodeBinding: {
+        field_0: "text"
+      },
+
+      tags: {
+        root: {
+          template: "root"
         },
-
-        tags: {
-          root: {
-            template: "root"
-          },
-          hidden: {
-            template: "hidden"
-          },
-          main: {
-            template: "main"
-          },
-          years: {
-            template: "arrow"
-          },
-          small: {
-            template: "small"
-          },
-          ebit: {
-            template: "ebit"
-          },
-          ebitNext: {
-            template: "ebitNext"
-          },
-          ebitNextTO: {
-            template: "ebitNextTO"
-          },
-        }
-      });
-
-
-      chart1.load(nodes);
-
-      var chart2 = new OrgChart(document.getElementById("tree2"), {
-        orientation: OrgChart.orientation.left,
-        scaleInitial: 0.5,
-        mouseScrool: OrgChart.action.none,
-        enableDragDrop: true,
-        enableSearch: false,
-        nodeBinding: {
-          field_0: "text"
+        hidden: {
+          template: "hidden"
         },
-
-        tags: {
-          root: {
-            template: "root"
-          },
-          hidden: {
-            template: "hidden"
-          },
-          main: {
-            template: "main"
-          },
-          years: {
-            template: "numbers"
-          },
-          small: {
-            template: "small"
-          },
-          ebit: {
-            template: "ebit"
-          },
-          ebitNext: {
-            template: "ebitNext"
-          },
-          ebitNextTO: {
-            template: "ebitNextTO"
-          },
-        }
-      });
-
-      chart2.load(nodes);
-
-      var chart3 = new OrgChart(document.getElementById("tree3"), {
-        orientation: OrgChart.orientation.left,
-        scaleInitial: 0.5,
-        mouseScrool: OrgChart.action.none,
-        enableDragDrop: true,
-        enableSearch: false,
-        nodeBinding: {
-          field_0: "text"
+        main: {
+          template: "main"
         },
+        years: {
+          template: "arrow"
+        },
+        small: {
+          template: "small"
+        },
+        ebit: {
+          template: "ebit"
+        },
+        ebitNext: {
+          template: "ebitNext"
+        },
+        ebitNextTO: {
+          template: "ebitNextTO"
+        },
+      }
+    });
 
-        tags: {
-          root: {
-            template: "root"
-          },
-          hidden: {
-            template: "hiddenPartner"
-          },
-          main: {
-            template: "arrows"
-          },
-          years: {
-            template: "numbers"
-          },
-          small: {
-            template: "hiddenPartner"
-          },
-          ebit: {
-            template: "arrows"
-          },
-          ebitNext: {
-            template: "arrows"
-          },
-          ebitNextTO: {
-            template: "arrows"
-          },
-        }
-      });
 
-      chart3.load(nodes);
+    chart1.load(nodes);
 
-      OrgChart.templates.circle = Object.assign({}, OrgChart.templates.ana);
-      OrgChart.templates.circle.node =
-          '<circle cx="120" cy="30" r="65" fill="white" stroke-width="3" stroke="#00c2cb"></circle>';
-      OrgChart.templates.circle.field_0 = "";
-      OrgChart.templates.circle.link = "";
-      OrgChart.templates.circle.plus = "";
-      OrgChart.templates.circle.minus = "";
+    var chart2 = new OrgChart(document.getElementById("tree2"), {
+      orientation: OrgChart.orientation.left,
+      scaleInitial: 0.5,
+      nodeMouseClick: OrgChart.action.none,
+      mouseScrool: OrgChart.action.none,
+      enableDragDrop: true,
+      enableSearch: false,
+      nodeBinding: {
+        field_0: "text"
+      },
 
-      OrgChart.templates.circle.ok = 
-        '<line x1="70" y1="30" x2="95" y2="55" style="stroke:#008037;stroke-width:5" />'
-        + '<line x1="95" y1="55" x2="175" y2="15" style="stroke:#008037;stroke-width:5" />';
-      OrgChart.templates.circle.no = 
+      tags: {
+        root: {
+          template: "root"
+        },
+        hidden: {
+          template: "hidden"
+        },
+        main: {
+          template: "main"
+        },
+        years: {
+          template: "numbers"
+        },
+        small: {
+          template: "small"
+        },
+        ebit: {
+          template: "ebit"
+        },
+        ebitNext: {
+          template: "ebitNext"
+        },
+        ebitNextTO: {
+          template: "ebitNextTO"
+        },
+      }
+    });
+
+    chart2.load(nodes);
+
+    var chart3 = new OrgChart(document.getElementById("tree3"), {
+      orientation: OrgChart.orientation.left,
+      scaleInitial: 0.5,
+      nodeMouseClick: OrgChart.action.none,
+      mouseScrool: OrgChart.action.none,
+      enableDragDrop: true,
+      enableSearch: false,
+      nodeBinding: {
+        field_0: "text"
+      },
+
+      tags: {
+        root: {
+          template: "root"
+        },
+        hidden: {
+          template: "hiddenPartner"
+        },
+        main: {
+          template: "arrows"
+        },
+        years: {
+          template: "numbers"
+        },
+        small: {
+          template: "hiddenPartner"
+        },
+        ebit: {
+          template: "arrows"
+        },
+        ebitNext: {
+          template: "arrows"
+        },
+        ebitNextTO: {
+          template: "arrows"
+        },
+      }
+    });
+
+    chart3.load(nodes);
+
+    OrgChart.templates.circle = Object.assign({}, OrgChart.templates.ana);
+    OrgChart.templates.circle.node =
+      '<circle cx="120" cy="30" r="65" fill="white" stroke-width="3" stroke="#00c2cb"></circle>';
+    OrgChart.templates.circle.field_0 = "";
+    OrgChart.templates.circle.link = "";
+    OrgChart.templates.circle.plus = "";
+    OrgChart.templates.circle.minus = "";
+
+    OrgChart.templates.circle.ok =
+      '<line x1="70" y1="30" x2="95" y2="55" style="stroke:#008037;stroke-width:5" />'
+      + '<line x1="95" y1="55" x2="175" y2="15" style="stroke:#008037;stroke-width:5" />';
+    OrgChart.templates.circle.no =
       '<line x1="95" y1="10" x2="155" y2="55" style="stroke:#ff1616;stroke-width:5" />'
-        + '<line x1="95" y1="55" x2="155" y2="10" style="stroke:#ff1616;stroke-width:5" />';
-      nodes = [
-        { id: 1, text: "A- Robust Profitable", tags: ["root"] },
-
-        { id: 2, pid: 1, text: "Turnover", tags: ["main"] },
-        { id: 5, pid: 2, text: "100 CR", tags: ['partner', 'small'] },
-        { id: 6, pid: 2, text: "2022-2023", tags: ['partner', 'years'] },
-
-        { id: 7, pid: 2, text: "Turnover", tags: ["circle"], ok: "ok" },
-        { id: 8, pid: 7, text: "150 CR", tags: ['partner', 'small'] },
-        { id: 9, pid: 7, text: "2023-2024", tags: ['partner', 'years'] },
-
-        { id: 3, pid: 1, text: "EBIT", tags: ["ebit"] },
-        { id: 10, pid: 3, text: "EBIT", tags: ["circle"], ok: "ok" },
-        { id: 16, pid: 10, text: "EBIT", tags: ["circle"], ok: "ok" },
-
-        { id: 12, pid: 7, text: "Turnover", tags: ["circle"], ok: "ok" },
-        { id: 13, pid: 12, text: "200 CR", tags: ['partner', 'small'] },
-        { id: 14, pid: 12, text: "2024-2025", tags: ['partner', 'years'] },
-
-        { id: 4, pid: 1, text: "T/O of Export", tags: ["hidden"] },
-        { id: 11, pid: 4, text: "T/O of Export", tags: ["circle"], no: "no" },
-        { id: 15, pid: 11, text: "T/O of Export", tags: ["circle"], ok: "ok" },
-      ];
+      + '<line x1="95" y1="55" x2="155" y2="10" style="stroke:#ff1616;stroke-width:5" />';
 
 
-      var chart4 = new OrgChart(document.getElementById("tree4"), {
-        orientation: OrgChart.orientation.left,
-        scaleInitial: 0.5,
-        mouseScrool: OrgChart.action.none,
-        enableDragDrop: true,
-        enableSearch: false,
-        nodeBinding: {
-          field_0: "text",
-          ok: "ok",
-          no: "no"
+    nodes = [
+      { id: 1, text: "A- Robust Profitable", tags: ["root"] },
+
+      { id: 2, pid: 1, text: "Turnover", tags: ["main"] },
+      { id: 5, pid: 2, text: "100 CR", tags: ['partner', 'small'] },
+      { id: 6, pid: 2, text: "2022-2023", tags: ['partner', 'years'] },
+
+      { id: 7, pid: 2, text: "Turnover", tags: ["circle"], ok: "ok" },
+      { id: 8, pid: 7, text: "150 CR", tags: ['partner', 'small'] },
+      { id: 9, pid: 7, text: "2023-2024", tags: ['partner', 'years'] },
+
+      { id: 3, pid: 1, text: "EBIT", tags: ["ebit"] },
+      { id: 10, pid: 3, text: "EBIT", tags: ["circle"], ok: "ok" },
+      { id: 16, pid: 10, text: "EBIT", tags: ["circle"], ok: "ok" },
+
+      { id: 12, pid: 7, text: "Turnover", tags: ["circle"], ok: "ok" },
+      { id: 13, pid: 12, text: "200 CR", tags: ['partner', 'small'] },
+      { id: 14, pid: 12, text: "2024-2025", tags: ['partner', 'years'] },
+
+      { id: 4, pid: 1, text: "T/O of Export", tags: ["hidden"] },
+      { id: 11, pid: 4, text: "T/O of Export", tags: ["circle"], no: "no" },
+      { id: 15, pid: 11, text: "T/O of Export", tags: ["circle"], ok: "ok" },
+    ];
+
+
+
+    var chart4 = new OrgChart(document.getElementById("tree4"), {
+      orientation: OrgChart.orientation.left,
+      scaleInitial: 0.5,
+      mouseScrool: OrgChart.action.none,
+      nodeMouseClick: OrgChart.action.none,
+      enableDragDrop: true,
+      enableSearch: false,
+      nodeBinding: {
+        field_0: "text",
+        ok: "ok",
+        no: "no"
+      },
+
+      tags: {
+        root: {
+          template: "root"
         },
-
-        tags: {
-          root: {
-            template: "root"
-          },
-          hidden: {
-            template: "main"
-          },
-          main: {
-            template: "main"
-          },
-          years: {
-            template: "numbers"
-          },
-          small: {
-            template: "hiddenPartner"
-          },
-          ebit: {
-            template: "main"
-          },
-          ebitNext: {
-            template: "arrows"
-          },
-          ebitNextTO: {
-            template: "arrows"
-          },
-          circle: {
-            template: "circle"
-          }
+        hidden: {
+          template: "main"
+        },
+        main: {
+          template: "main"
+        },
+        years: {
+          template: "numbers"
+        },
+        small: {
+          template: "hiddenPartner"
+        },
+        ebit: {
+          template: "main"
+        },
+        ebitNext: {
+          template: "arrows"
+        },
+        ebitNextTO: {
+          template: "arrows"
+        },
+        circle: {
+          template: "circle"
         }
-      });
+      }
+    });
 
-      chart4.load(nodes);
+    chart4.load(nodes);
   </script>
 </body>
 
