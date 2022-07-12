@@ -330,7 +330,9 @@
       OrgChart.templates.circle.ok = 
         '<line x1="70" y1="30" x2="95" y2="55" style="stroke:#008037;stroke-width:5" />'
         + '<line x1="95" y1="55" x2="175" y2="15" style="stroke:#008037;stroke-width:5" />';
-      
+      OrgChart.templates.circle.no = 
+      '<line x1="95" y1="10" x2="155" y2="55" style="stroke:#ff1616;stroke-width:5" />'
+        + '<line x1="95" y1="55" x2="155" y2="10" style="stroke:#ff1616;stroke-width:5" />';
       nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
 
@@ -351,7 +353,7 @@
         { id: 14, pid: 12, text: "2024-2025", tags: ['partner', 'years'] },
 
         { id: 4, pid: 1, text: "T/O of Export", tags: ["hidden"] },
-        { id: 11, pid: 4, text: "T/O of Export", tags: ["circle"] },
+        { id: 11, pid: 4, text: "T/O of Export", tags: ["circle"], no: "no" },
         { id: 15, pid: 11, text: "T/O of Export", tags: ["circle"], ok: "ok" },
       ];
 
@@ -364,7 +366,8 @@
         enableSearch: false,
         nodeBinding: {
           field_0: "text",
-          ok: "ok"
+          ok: "ok",
+          no: "no"
         },
 
         tags: {
