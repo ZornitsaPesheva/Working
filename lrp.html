@@ -326,6 +326,10 @@
       OrgChart.templates.circle.link = "";
       OrgChart.templates.circle.plus = "";
       OrgChart.templates.circle.minus = "";
+
+      OrgChart.templates.circle.ok = 
+        '<line x1="70" y1="30" x2="90" y2="45" style="stroke:rgb(255,0,0);stroke-width:2" />'
+        + '<line x1="90" y1="45" x2="180" y2="25" style="stroke:rgb(255,0,0);stroke-width:2" />';
       
       nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
@@ -334,7 +338,7 @@
         { id: 5, pid: 2, text: "100 CR", tags: ['partner', 'small'] },
         { id: 6, pid: 2, text: "2022-2023", tags: ['partner', 'years'] },
 
-        { id: 7, pid: 2, text: "Turnover", tags: ["circle"] },
+        { id: 7, pid: 2, text: "Turnover", tags: ["circle"], ok: "ok" },
         { id: 8, pid: 7, text: "150 CR", tags: ['partner', 'small'] },
         { id: 9, pid: 7, text: "2023-2024", tags: ['partner', 'years'] },
 
@@ -359,7 +363,8 @@
         enableDragDrop: true,
         enableSearch: false,
         nodeBinding: {
-          field_0: "text"
+          field_0: "text",
+          ok: "ok"
         },
 
         tags: {
