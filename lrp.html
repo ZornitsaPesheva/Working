@@ -172,13 +172,7 @@
       OrgChart.templates.hiddenPartner = Object.assign({}, OrgChart.templates.hidden);
       OrgChart.templates.hiddenPartner.link = "";
 
-      OrgChart.templates.circle = Object.assign({}, OrgChart.templates.ana);
-      OrgChart.templates.circle.node =
-                '<circle cx="120" cy="30" r="65" fill="white" stroke-width="1" stroke="#aeaeae"></circle>';
-      OrgChart.templates.circle.field_0 = "";
-      OrgChart.templates.circle.link = "";
-      OrgChart.templates.circle.plus = "";
-      OrgChart.templates.circle.minus = "";
+
       
       let nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
@@ -325,6 +319,14 @@
 
       chart3.load(nodes);
 
+      OrgChart.templates.circle = Object.assign({}, OrgChart.templates.ana);
+      OrgChart.templates.circle.node =
+          '<circle cx="120" cy="30" r="65" fill="white" stroke-width="3" stroke="#00c2cb"></circle>';
+      OrgChart.templates.circle.field_0 = "";
+      OrgChart.templates.circle.link = "";
+      OrgChart.templates.circle.plus = "";
+      OrgChart.templates.circle.minus = "";
+      
       nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
 
