@@ -87,6 +87,8 @@
 
       OrgChart.templates.hidden = Object.assign({}, OrgChart.templates.root);
       OrgChart.templates.hidden.size = [0, 0];
+      OrgChart.templates.hidden.field_0 = "";
+
 
       OrgChart.templates.main = Object.assign({}, OrgChart.templates.root);
       OrgChart.templates.main.size = [150, 80];
@@ -141,7 +143,11 @@
 
       OrgChart.templates.arrows = Object.assign({}, OrgChart.templates.main);
       OrgChart.templates.arrows.node = '<path fill="#41c1ba" d="M0 0 L150 0 L190 40 L150 80 L0 80 L 40 40 Z'
-      OrgChart.templates.arrows.links = "";
+      OrgChart.templates.arrows.link = "";
+
+      OrgChart.templates.hiddenPartner = Object.assign({}, OrgChart.templates.hidden);
+      OrgChart.templates.hiddenPartner.link = "";
+
 
       let nodes = [
         { id: 1, text: "A- Robust Profitable", tags: ["root"] },
@@ -272,16 +278,16 @@
             template: "numbers"
           },
           small: {
-            template: "small"
+            template: "hiddenPartner"
           },
           ebit: {
-            template: "ebit"
+            template: "arrows"
           },
           ebitNext: {
-            template: "ebitNext"
+            template: "arrows"
           },
           ebitNextTO: {
-            template: "ebitNextTO"
+            template: "arrows"
           },
         }
       });
